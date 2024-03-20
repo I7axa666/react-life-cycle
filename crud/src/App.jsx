@@ -1,6 +1,4 @@
 import './App.css'
-
-import NewNote from './components/NewNote'
 import UpdateBtn from './components/UpdateBtn'
 
 function App() {
@@ -8,8 +6,6 @@ function App() {
   return (
     <>
     <UpdateBtn />
-
-    <NewNote />
     </>
     
  

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-function NewNote() {
+function NewNote(props) {
+  const { setNotes } = props;
   const url = 'http://localhost:7070/notes';
   const [defaultText, setDefaultText] = useState('Введите заметку');
   const onChange = (event) => {
@@ -24,7 +25,18 @@ function NewNote() {
       },
       body,
     });
+
+    setTimeout(() => {fetch(url, {
+        method: 'GET',
+        headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => response.json())
+    .then(data => setNotes(data));
+  }, 500);
+
     setDefaultText('Введите новую заметку');
+    
   };
 
 
@@ -35,7 +47,7 @@ function NewNote() {
       <div className="card-body">
         <form method="post" onSubmit={onSubmit} name="postContent">
           <button type ="submit" className="send-btn">►</button>
-          <textarea name="content"  cols="30" rows="10" value={defaultText} onChange={onChange}></textarea>
+          <textarea name="content"  cols="30" rows="10" placeholder={defaultText} onChange={onChange}></textarea>
         </form>
       </div>
     </div>

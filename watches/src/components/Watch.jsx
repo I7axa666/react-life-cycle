@@ -9,7 +9,7 @@ export default function Watch({watchList, setWatches}) {
  
   const currentTimeToDeg = () => {
       const date = moment();
-      const hoursDeg = (date.hours()%12 + 1) * 30;
+      const hoursDeg = (date.hours() % 12 - date.utcOffset() / 60 + 1) * 30;
       const minutesDeg = date.minutes() * 6;
       const secondsDeg = date.seconds() * 6;
       setDegs({...degs, hoursDeg: hoursDeg, minutesDeg: minutesDeg, secondsDeg: secondsDeg}) 

@@ -11,13 +11,14 @@ function Card(props) {
       },
     })
 
-    fetch(url, {
+    setTimeout(() => {fetch(url, {
       method: 'GET',
       headers: {
       'Content-Type': 'application/json',
     },
     }).then(response => response.json())
     .then(data => setNotes(data));
+  }, 100);
 
   }
   
@@ -26,7 +27,7 @@ function Card(props) {
       <div className="card-body">
         <button className="delete-btn" 
         onClick={onClick}>X</button>
-        <textarea name="note"  cols="30" rows="10" defaultValue={note.content}></textarea>
+        <div className="note-text">{note.content}</div>
       </div>
     </div>
   )

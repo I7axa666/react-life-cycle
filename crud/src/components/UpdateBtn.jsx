@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Card from './Card';
+import NewNote from './NewNote'
 
 function UpdateBtn() {
   const url = 'http://localhost:7070/notes';
@@ -37,6 +38,7 @@ function UpdateBtn() {
     <div className='container'>
       {notes ? notes.map(note => <Card key={note.id} note={note} setNotes={setNotes}/>) : <></>}
     </div>
+    <NewNote setNotes={setNotes} />
     </>
   )
 }

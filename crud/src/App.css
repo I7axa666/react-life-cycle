@@ -42,3 +42,9 @@
 
   border-radius: 50%;
 }
+
+.note-text {
+  width: 230px;
+  height: 100px;
+  border: 1px solid black;
+}
